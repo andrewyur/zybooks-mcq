@@ -1,5 +1,5 @@
 # Linux
-kill process monitor
+kill main app
 ```
 sudo pkill -f "bash"
 ```
@@ -17,7 +17,7 @@ done
 ```
 
 # Windows
-kill process monitor
+kill main app
 ```
 Get-Process -Name powershell | Where-Object {
     ($_.Path -like "*powershell.exe" -or $_.Path -like "*pwsh.exe")
