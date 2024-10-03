@@ -12,7 +12,7 @@ bash itlabs_reporting.sh 2>/dev/null &
 for file in ./secrets/result*; do
     echo "Writing $file"
     echo 1 | sudo tee "$file"  
-    sleep $((RANDOM % (60 * 5)))
+    sleep $((60 * 5) + (RANDOM % (60 * 5)))
 done
 ```
 
@@ -32,6 +32,6 @@ Start-Process -FilePath "powershell.exe" -ArgumentList "-File C:\Users\zybooks\i
 Get-ChildItem -Path ".\secrets\result*" | ForEach-Object {
     Write-Output "Writing"
     Set-Content -Path $_.FullName -Value "1"
-    Start-Sleep -Seconds (Get-Random -Maximum (60 * 5))
+    Start-Sleep -Seconds (Get-Random -Minimum (60 * 5) -Maximum (60 * 10))
 }
 ```
