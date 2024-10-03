@@ -12,7 +12,7 @@ bash itlabs_reporting.sh 2>/dev/null &
 for file in ./secrets/result*; do
     echo "Writing $file"
     echo 1 | sudo tee "$file"  
-    sleep $((60 * 5) + (RANDOM % (60 * 5)))
+    sleep $((60 * 5 + RANDOM % (60 * 5)))
 done
 ```
 
