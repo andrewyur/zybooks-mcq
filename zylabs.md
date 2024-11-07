@@ -9,7 +9,7 @@ cd
 
 bash itlabs_reporting.sh 2>/dev/null &
 
-for file in ./secrets/result*; do
+for file in (./secrets/result* | sort -V); do
     sleep $((60 * 1 + RANDOM % (60 * 4)))
     echo "Writing $file"
     echo 1 | sudo tee "$file"  
@@ -29,7 +29,7 @@ cd \Users\zybooks\
 
 Start-Process -FilePath "powershell.exe" -ArgumentList "-File C:\Users\zybooks\itlabs_reporting.ps1"
 
-Get-ChildItem -Path ".\secrets\result*" | ForEach-Object {
+Get-ChildItem -Path ".\secrets\result*" | Sort-Object { [int]($_.Name -replace 'results','') } | ForEach-Object {
     Start-Sleep -Seconds (Get-Random -Minimum 10 -Maximum 30)
     Write-Output "Writing $_"
     Set-Content -Path $_.FullName -Value "1"
