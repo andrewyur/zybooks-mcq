@@ -30,7 +30,7 @@ cd \Users\zybooks\
 Start-Process -FilePath "powershell.exe" -ArgumentList "-File C:\Users\zybooks\itlabs_reporting.ps1"
 
 Get-ChildItem -Path ".\secrets\result*" | ForEach-Object {
-    Start-Sleep -Seconds (Get-Random -Minimum (60 * 1) -Maximum (60 * 5))
+    Start-Sleep -Seconds (Get-Random -Minimum 10 -Maximum 30)
     Write-Output "Writing $_"
     Set-Content -Path $_.FullName -Value "1"
 }
